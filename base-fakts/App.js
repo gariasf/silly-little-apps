@@ -1,4 +1,4 @@
-import { Button, Text, StyleSheet, View, TextInput, ScrollView } from 'react-native';
+import { Button, Text, StyleSheet, View, TextInput, FlatList } from 'react-native';
 import { useState } from 'react';
 
 export default function App() {
@@ -10,7 +10,10 @@ export default function App() {
   }
 
   function addGoalHandler() {
-    setGoals(prevGoals => [...prevGoals, enteredGoalText]);
+    setGoals(prevGoals => [...prevGoals, {
+      key: Math.random().toString(),
+      text: enteredGoalText
+    }]);
   }
 
   return (
@@ -20,13 +23,14 @@ export default function App() {
        <Button title="Add ze goal" onPress={addGoalHandler} />
      </View>
      <View  style={styles.goalsContainer}>
-    <ScrollView >
-        {goals.map((goal, index) => (
-          <View key={index} style={styles.goalItem}>
-            <Text style={styles.goalText}>{goal}</Text>
+    <FlatList
+        data={goals}
+        renderItem={({ item }) => (
+          <View style={styles.goalItem}>
+            <Text style={styles.goalText}>{item.text}</Text>
           </View>
-        ))}
-     </ScrollView>
+        )}
+    />
      </View>
     </View>
   );
