@@ -27,16 +27,14 @@ export default function GoalInput({ onAddGoal, onCancel, visible }) {
           value={enteredGoalText}
         />
         <View style={styles.buttonContainer}>
-         <View style={styles.button}>
-           <Button title="Add ze goal" onPress={addGoalHandler} />
-         </View>
           <View style={styles.button}>
-            <Button title="Cancel" onPress={onCancel} />
+            <Button title="Cancel" onPress={onCancel} color="#f31282" />
+          </View>
+          <View style={styles.button}>
+            <Button title="Add ze goal" onPress={addGoalHandler} color="#b180f0" />
           </View>
         </View>
       </View>
-
-
     </Modal>
   );
 }
@@ -56,10 +54,12 @@ const styles = StyleSheet.create({
   },
   textInput: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#e4d0ff',
+    backgroundColor: '#e4d0ff',
+    color: '#120438',
+    borderRadius: 6,
     width: "100%",
-    marginRight: 8,
-    paddingLeft: 8,
+    padding: 16,
   },
   buttonContainer: {
     flexDirection: 'row',
